@@ -45,9 +45,13 @@ class Tela(object):
             tela.blit(imagemFundo, (0,0))
 
             testo = fonte_texto.render('Fase: '+ self.fase,1,(255, 255, 255))
+            xDotexto = 300
             testo2 = fonte_texto.render('Clique para continuar',1,(255, 255, 255))
+            if self.fase == "Fim doTeste e o Usuario será deslogado.":
+                testo = fonte_texto.render( self.fase,1,(255, 255, 255))
+                xDotexto = 30
 
-            tela.blit(testo, (300, 20))
+            tela.blit(testo, (xDotexto, 20))
             tela.blit(testo2, (210, 55))
             
             pygame.display. update()

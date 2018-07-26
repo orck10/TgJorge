@@ -97,3 +97,6 @@ class Fases(object):
         b3 = Bola(coluna1, fundo, 'roxo')
         i = pygame.image.load('imagens/fase12.png')
         return (b1, b2, b3, 5, i, '12')
+
+    def telaDeFechamento(self):
+        return ("Fim doTeste e o Usuario será deslogado.")

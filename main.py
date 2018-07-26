@@ -63,7 +63,7 @@ def main():
 
             #adiciona a lista de resultados o resultado obtido na fase de teste
             #em forma de tupla
-
+            
             #Fase1
             b1, b2, b3, m, i, fase= f.fase1()
 
@@ -245,6 +245,11 @@ def main():
                 tentativas += 1
                 
             resultados.append((tentativas, x))
+
+            #motrar tela de aviso antes de fechar
+            fase = f.telaDeFechamento()
+            tela = Tela(fase)
+            tela.telaDeMudanca()
 
             #fecha a tela do jogo e dpois printa a tabela de resultados
             e.sair()
