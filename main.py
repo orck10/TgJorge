@@ -18,6 +18,7 @@ from telaDeMudanca import *
 from telaDeLogin import *
 from selecaoDeCrianca import *
 from telaDeVerificacao import *
+from postResultados import *
 
 def main():
     #fazer login
@@ -25,12 +26,14 @@ def main():
     
     usuario = TelaDeLogin(root)
     try:
-        json = usuario.abrirTela()['criancas']
+        prof = usuario.abrirTela()
+        jsonC = prof['criancas']
+        print(prof)
     except:
         return False
     
     while True:
-        crianca = TelaDeSelecao(json).abrirTela()
+        crianca = TelaDeSelecao(jsonC).abrirTela()
         if(crianca == ""):
             print("sair")
             break
@@ -230,7 +233,7 @@ def main():
                 tentativas += 1
                 
             resultados.append((tentativas, x))
-
+            
             #fase12
             b1, b2, b3, m, i, fase= f.fase12()
 
@@ -253,7 +256,14 @@ def main():
 
             #fecha a tela do jogo e dpois printa a tabela de resultados
             e.sair()
-            print (resultados)
+            print (json.dumps(resultados))
+            print (prof['usuario']['nome'],prof['usuario']['senha'])
+
+            respostaJson = "{\"cricanca\" : "+crianca+",\"resultados\":{"+json.dumps(resultados)+"}}"
+            print (respostaJson)
+
+            print(PostResultado(respostaJson,prof['usuario']['nome'],prof['usuario']['senha']))
+            
             main()
             break
             
