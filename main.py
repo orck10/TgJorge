@@ -259,10 +259,13 @@ def main():
             print (json.dumps(resultados))
             print (prof['usuario']['nome'],prof['usuario']['senha'])
 
-            respostaJson = "{\"cricanca\" : "+crianca+",\"resultados\":{"+json.dumps(resultados)+"}}"
+            respostaJson = "{\"cricanca\" : \""+crianca+"\",\"resultados\":"+json.dumps(resultados)+"}"
             print (respostaJson)
 
-            print(PostResultado(respostaJson,prof['usuario']['nome'],prof['usuario']['senha']))
+            print(PostResultado(respostaJson,prof['usuario']['nome'],prof['usuario']['senha']).postar())
+
+            while(PostResultado(respostaJson,prof['usuario']['nome'],prof['usuario']['senha']).postar()['error']=='true'):
+                print("Falhou")
             
             main()
             break
