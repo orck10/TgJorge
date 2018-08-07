@@ -14,7 +14,10 @@ class TelaDeSelecao:
         self.botoes = []
 
         self.espacao = Label(self.root)
-        
+        self.espacao2 = Label(self.root)
+
+        self.botaoF = Button(self.root, width = 20, text="Fechar")
+        self.botaoF["command"] = partial(self.fecharJanela)
         self.espacao.pack()
         for x in json:
             nome = x['nome']
@@ -26,6 +29,9 @@ class TelaDeSelecao:
         for b in self.botoes:
             b.pack()
 
+        
+        self.espacao2.pack()
+        self.botaoF.pack()
 
     def abrirTela(self):
         self.retorno = ""
