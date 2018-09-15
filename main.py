@@ -1,6 +1,7 @@
 #appVersao1.1-Está versão foi retirada as classes BolaVerde, BolaVermelha e BolaRoxa,
 #que foram substituidas pela classe Bola que agora recebe como parametro
 #uma string com o nome da cor
+#Quase terminado
 
 import json
 import pygame, sys
