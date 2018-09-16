@@ -3,6 +3,7 @@ from tkinter import *
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+from recursos import *
 
 class TelaDeLogin:
     
@@ -76,7 +77,9 @@ class TelaDeLogin:
         usuario = self.nome.get()
         senha = self.senha.get()
 
-        url = 'http://localhost:8080/FrontTg/AtualicarApp.action' 
+        recursos = Recursos()
+        
+        url = recursos.uri()+'/AtualicarApp.action'
         post_fields = {'nomeUsuario': usuario, 'senha': senha}     
 
         request = Request(url, urlencode(post_fields).encode())

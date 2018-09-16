@@ -3,6 +3,7 @@
 #uma string com o nome da cor
 
 import json
+import time
 import pygame, sys
 
 from pygame.locals import *
@@ -258,8 +259,8 @@ def main():
             e.sair()
             print (json.dumps(resultados))
             print (prof['usuario']['nome'],prof['usuario']['senha'])
-
-            respostaJson = "{\"cricanca\" : \""+crianca+"\",\"resultados\":"+json.dumps(resultados)+"}"
+            data = int(round(time.time() * 1000))
+            respostaJson = "{\"cricanca\" : \""+crianca+"\",\"resultados\":"+json.dumps(resultados)+", \"data\":"+str(data)+"}"
             print (respostaJson)
 
             print(PostResultado(respostaJson,prof['usuario']['nome'],prof['usuario']['senha']).postar())
